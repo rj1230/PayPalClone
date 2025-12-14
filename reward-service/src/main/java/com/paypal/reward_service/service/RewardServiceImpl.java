@@ -1,0 +1,22 @@
+package com.paypal.reward_service.service;
+
+import com.paypal.reward_service.entity.Reward;
+import com.paypal.reward_service.repository.RewardRepository;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+public class RewardServiceImpl implements RewardService{
+
+    private RewardRepository rewardRepository;
+    @Override
+    public Reward sendReward(Reward reward) {
+        reward.setSendAt(LocalDateTime.now());
+        return rewardRepository.save(reward);
+    }
+
+    @Override
+    public List<Reward> sendRewardByUserId(Long userId) {
+        return rewardRepository.findByUserId(userId);
+    }
+}
