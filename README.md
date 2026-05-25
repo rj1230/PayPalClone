@@ -1,30 +1,6 @@
  PayPal Clone — Microservices Architecture
 A full-featured PayPal-inspired payment platform built with Java, Spring Boot, and a microservices architecture. Supports user management, digital wallets, transactions, reward points, and real-time notifications.
 
-📐 Architecture Overview
-                        ┌─────────────────────┐
-                        │    API Gateway /     │
-                        │    Load Balancer     │
-                        └────────┬────────────┘
-                                 │
-          ┌──────────────────────┼──────────────────────┐
-          │                      │                       │
-  ┌───────▼──────┐   ┌───────────▼──────┐   ┌──────────▼──────┐
-  │ user-service │   │  wallet-service   │   │transaction-svc  │
-  │   :8081      │   │     :8082         │   │    :8083         │
-  └──────────────┘   └──────────────────┘   └─────────────────┘
-                                 │
-                       ┌─────────▼──────────┐
-                       │  notification-svc  │
-                       │      :8084         │
-                       └────────────────────┘
-                                 │
-          ┌──────────────────────┼──────────────────────┐
-          │                      │                       │
-    ┌─────▼─────┐         ┌──────▼─────┐         ┌──────▼────┐
-    │  MySQL    │         │   Redis    │         │  Kafka    │
-    │  (per svc)│         │  (Cache)   │         │ (Events)  │
-    └───────────┘         └────────────┘         └───────────┘
 
 🧩 Microservices
 1. 👤 user-service — User Management
